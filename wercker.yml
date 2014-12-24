@@ -1,0 +1,37 @@
+box: wercker-labs/docker
+no-response-timeout: 20
+build:
+  steps:
+    - script:
+        name: install os requirements
+        code: |-
+          sudo apt-get update
+          sudo apt-get install -y make software-properties-common git wget man-db
+    - script:
+        name: [dokku] load dokku
+        code: |
+          git clone https://github.com/progrium/dokku.git
+          cd dokku
+    - script:
+        name: [dokku] ci dependencies
+        code: make -e ci-dependencies
+    - script:
+        name: [dokku] install dokku
+        code: sudo -E CI=true DOCKER_VERSION=1.4.0 make -e install
+    - script:
+        name: [dokku] setup deploy tests
+        code: sudo -E make -e setup-deploy-tests
+    - script:
+        name: [dokku] lint
+        code: sudo -E make -e lint
+    - script:
+        name: [buildstep] Install buildstep
+        code: |
+          sudo -E BUILD_STACK=true make -e stack
+    # - script:
+    #     name: [dokku] unit tests
+    #     code: sudo -E make -e unit-tests
+    - script: 
+        name: Test mojolicious 2.0
+        code: |
+          cd test && ./test_deploy ./apps/mojo dokku.me
