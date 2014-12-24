@@ -14,24 +14,24 @@ build:
           cd dokku
     - script:
         name: "[dokku] ci dependencies"
-        code: make -e ci-dependencies
+        code: cd dokku && make -e ci-dependencies
     - script:
         name: "[dokku] install dokku"
-        code: sudo -E CI=true DOCKER_VERSION=1.4.0 make -e install
+        code: cd dokku && sudo -E CI=true DOCKER_VERSION=1.4.0 make -e install
     - script:
         name: "[dokku] setup deploy tests"
-        code: sudo -E make -e setup-deploy-tests
+        code: cd dokku && sudo -E make -e setup-deploy-tests
     - script:
         name: "[dokku] lint"
-        code: sudo -E make -e lint
+        code: cd dokku && sudo -E make -e lint
     - script:
         name: "[buildstep] Install buildstep"
         code: |
-          sudo -E BUILD_STACK=true make -e stack
+          cd dokku && sudo -E BUILD_STACK=true make -e stack
     # - script:
     #     name: [dokku] unit tests
     #     code: sudo -E make -e unit-tests
     - script: 
         name: Test mojolicious 2.0
         code: |
-          cd test && ./test_deploy ./apps/mojo dokku.me
+          cd dokku/test && ./test_deploy ../../test/apps/mojo dokku.me
