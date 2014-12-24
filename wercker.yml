@@ -34,4 +34,4 @@ build:
     - script: 
         name: Test mojolicious 2.0
         code: |
-          cd dokku/test && ./test_deploy ../../test/apps/mojo dokku.me
+          cd dokku/tests && ./test_deploy ../../test/apps/mojo dokku.me
