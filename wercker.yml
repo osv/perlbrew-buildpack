@@ -8,24 +8,24 @@ build:
           sudo apt-get update
           sudo apt-get install -y make software-properties-common git wget man-db
     - script:
-        name: [dokku] load dokku
+        name: "[dokku] load dokku"
         code: |
           git clone https://github.com/progrium/dokku.git
           cd dokku
     - script:
-        name: [dokku] ci dependencies
+        name: "[dokku] ci dependencies"
         code: make -e ci-dependencies
     - script:
-        name: [dokku] install dokku
+        name: "[dokku] install dokku"
         code: sudo -E CI=true DOCKER_VERSION=1.4.0 make -e install
     - script:
-        name: [dokku] setup deploy tests
+        name: "[dokku] setup deploy tests"
         code: sudo -E make -e setup-deploy-tests
     - script:
-        name: [dokku] lint
+        name: "[dokku] lint"
         code: sudo -E make -e lint
     - script:
-        name: [buildstep] Install buildstep
+        name: "[buildstep] Install buildstep"
         code: |
           sudo -E BUILD_STACK=true make -e stack
     # - script:
