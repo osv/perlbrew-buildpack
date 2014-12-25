@@ -1,7 +1,5 @@
-Perlbrew buildpack
+Perlbrew buildpack [![Build Status](https://app.wercker.com/status/251e6ac95fb3ca0d8028158c4f6b7712/s "Build Status")](https://app.wercker.com/project/bykey/251e6ac95fb3ca0d8028158c4f6b7712)
 =======
-
-[![Build Status](https://app.wercker.com/status/251e6ac95fb3ca0d8028158c4f6b7712/m "Build Status")](https://app.wercker.com/project/bykey/251e6ac95fb3ca0d8028158c4f6b7712)
 
 Deploy Perl applications to [Dokku](https://github.com/progrium/dokku/) in seconds.
 
