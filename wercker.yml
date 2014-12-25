@@ -34,4 +34,7 @@ build:
     - script: 
         name: Test mojolicious 2.0
         code: |
+          echo "---->" populate known_hosts again
+          ssh -o StrictHostKeyChecking=no dokku@dokku.me help > /dev/null
+          ssh -o StrictHostKeyChecking=no dokku@127.0.0.1 help > /dev/null
           cd dokku/tests && ./test_deploy ../../test/apps/mojo dokku.me
