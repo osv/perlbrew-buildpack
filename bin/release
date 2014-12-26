@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 cat << EOF
+config_vars:
+  PATH: /app/local/bin:$PATH
+  PERL5LIB: /app/local/lib/perl5
+  PERLBREW_ROOT: /app/local/perlbrew
 addons: []
 default_process_types: {}
 EOF

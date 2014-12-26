@@ -7,10 +7,6 @@ indent() {
   sed -u 's/^/       /'
 }
 
-set-env() {
-  echo "export $1=$2" >> ${BUILD_DIR}/.profile.d/01-perlbrew-setup.sh
-}
-
 BUILD_DIR=$1
 CACHE_DIR=$2
 
@@ -84,6 +80,3 @@ if [ -d ${BUILD_DIR}/local ]; then
   mkdir -p ${CACHE_DIR}
   cp -a ${BUILD_DIR}/local ${CACHE_DIR}/local
 fi
-
-set-env PERLBREW_ROOT /app/local/perlbrew
-set-env PERL5LIB /app/local/lib/perl5
